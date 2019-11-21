@@ -1,6 +1,7 @@
 # coding: utf-8
 import numpy as np
 import cv2
+import sys
   
 def rotaciona(imagemOriginal, angulo):
     imagem = imagemOriginal.copy()
@@ -38,7 +39,8 @@ def friso1EU(imagem):
     resultado = imagem.copy()
     for i in range(0,6):
         resultado = translacao(resultado,imagem)
-    cv2.imshow("F1", resultado)
+    #cv2.imshow("F1", resultado)
+    cv2.imwrite('FRISO1.png', resultado)
     
 def friso2EU(imagem):
 	imgBranca = branco(imagem)
@@ -50,7 +52,8 @@ def friso2EU(imagem):
 	for i in range(0,2):
 		x2 = translacao(x2,x2)
 	resultado = concatenaVertical(x1, x2)
-	cv2.imshow("F2", resultado)
+	#cv2.imshow("F2", resultado)
+	cv2.imwrite('FRISO2.png', resultado)
 	
 def friso3EU(imagem):
     imagem_refletida = reflexaoVertical(imagem)
@@ -58,7 +61,8 @@ def friso3EU(imagem):
 
     for i in range(0,2):
             resultado = translacao(resultado,resultado)
-    cv2.imshow("F3", resultado)
+    #cv2.imshow("F3", resultado)
+    cv2.imwrite('FRISO3.png', resultado)
 	 
 def friso4EU(imagem):
 	x1 = imagem
@@ -68,7 +72,8 @@ def friso4EU(imagem):
 		x1 = translacao(x1,x1)
 		x2 = translacao(x2,x2)
 	resultado = concatenaVertical(x1,x2)
-	cv2.imshow("F4", resultado)
+	#cv2.imshow("F4", resultado)
+	cv2.imwrite('FRISO4.png', resultado)
 	
 def friso5EU(imagem):
 	imgBranca = branco(imagem)
@@ -80,7 +85,8 @@ def friso5EU(imagem):
 	for i in range(0,2):
 		x2 = translacao(x2,x2)
 	resultado = concatenaVertical(x1, x2)
-	cv2.imshow("F5", resultado)	
+	#cv2.imshow("F5", resultado)
+	cv2.imwrite('FRISO5.png', resultado)	
 		
 def friso6EU(imagem):
 	imagem_refletida = reflexaoVertical(imagem)
@@ -95,7 +101,8 @@ def friso6EU(imagem):
 		partedebaixo = translacao(partedebaixo, partedebaixo)
 	
 	resultado = concatenaVertical(partedecima, partedebaixo)
-	cv2.imshow("F6", resultado)	
+	#cv2.imshow("F6", resultado)
+	cv2.imwrite('FRISO6.png', resultado)	
 		
 def friso7EU(imagem):
 	imagem_refletida = reflexaoVertical(imagem)
@@ -105,11 +112,14 @@ def friso7EU(imagem):
 		partedecima = translacao(partedecima, partedecima)
 		partedebaixo = translacao(partedebaixo, partedebaixo)
 	resultado = concatenaVertical(partedecima, partedebaixo)
-	cv2.imshow("F7", resultado)	
+	#cv2.imshow("F7", resultado)
+	cv2.imwrite('biu/FRISO7.png', resultado)	
 
-    
-imagem = cv2.imread("pe.png", 1)
-imagem = rotaciona(imagem, 270)
+foto = sys.argv[1]
+diretorio_output = sys.argv[2]
+
+imagem = cv2.imread(foto, 1)
+
 
 friso1EU(imagem)
 friso2EU(imagem)
@@ -119,7 +129,7 @@ friso5EU(imagem)
 friso6EU(imagem)
 friso7EU(imagem)
 
-cv2.waitKey(0)
+#cv2.waitKey(0)
 
 
 
