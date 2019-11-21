@@ -113,7 +113,7 @@ def friso7EU(imagem):
 		partedebaixo = translacao(partedebaixo, partedebaixo)
 	resultado = concatenaVertical(partedecima, partedebaixo)
 	#cv2.imshow("F7", resultado)
-	cv2.imwrite('biu/FRISO7.png', resultado)	
+	cv2.imwrite('FRISO7.png', resultado)	
 
 foto = sys.argv[1]
 diretorio_output = sys.argv[2]
