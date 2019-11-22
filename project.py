@@ -35,14 +35,14 @@ def reflexaoVertical(imagem):
 def reflexaoHV(imagem):
     return imagem[::-1,::-1]
     
-def friso1EU(imagem):
+def friso1(imagem):
     resultado = imagem.copy()
     for i in range(0,6):
         resultado = translacao(resultado,imagem)
-    #cv2.imshow("F1", resultado)
-    cv2.imwrite('FRISO1.png', resultado)
+
+    cv2.imwrite('%s/FRISO1.png' %diretorio_output, resultado)
     
-def friso2EU(imagem):
+def friso2(imagem):
 	imgBranca = branco(imagem)
 	x1 = translacao(imagem, imgBranca)
 	for i in range(0,2):
@@ -52,19 +52,19 @@ def friso2EU(imagem):
 	for i in range(0,2):
 		x2 = translacao(x2,x2)
 	resultado = concatenaVertical(x1, x2)
-	#cv2.imshow("F2", resultado)
-	cv2.imwrite('FRISO2.png', resultado)
 	
-def friso3EU(imagem):
+	cv2.imwrite('%s/FRISO2.png' %diretorio_output, resultado)
+	
+def friso3(imagem):
     imagem_refletida = reflexaoVertical(imagem)
     resultado = translacao(imagem_refletida,imagem)
 
     for i in range(0,2):
             resultado = translacao(resultado,resultado)
-    #cv2.imshow("F3", resultado)
-    cv2.imwrite('FRISO3.png', resultado)
+   
+    cv2.imwrite('%s/FRISO3.png' %diretorio_output, resultado)
 	 
-def friso4EU(imagem):
+def friso4(imagem):
 	x1 = imagem
 	x2 = reflexaoHorizontal(imagem)
 	
@@ -72,10 +72,10 @@ def friso4EU(imagem):
 		x1 = translacao(x1,x1)
 		x2 = translacao(x2,x2)
 	resultado = concatenaVertical(x1,x2)
-	#cv2.imshow("F4", resultado)
-	cv2.imwrite('FRISO4.png', resultado)
 	
-def friso5EU(imagem):
+	cv2.imwrite('%s/FRISO4.png' %diretorio_output, resultado)
+	
+def friso5(imagem):
 	imgBranca = branco(imagem)
 	x1 = translacao(imagem, imgBranca)
 	for i in range(0,2):
@@ -85,10 +85,10 @@ def friso5EU(imagem):
 	for i in range(0,2):
 		x2 = translacao(x2,x2)
 	resultado = concatenaVertical(x1, x2)
-	#cv2.imshow("F5", resultado)
-	cv2.imwrite('FRISO5.png', resultado)	
+	
+	cv2.imwrite('%s/FRISO5.png' %diretorio_output, resultado)	
 		
-def friso6EU(imagem):
+def friso6(imagem):
 	imagem_refletida = reflexaoVertical(imagem)
 	partedecima = translacao(imagem_refletida,imagem)
 	imgBranca = branco(partedecima)
@@ -101,10 +101,10 @@ def friso6EU(imagem):
 		partedebaixo = translacao(partedebaixo, partedebaixo)
 	
 	resultado = concatenaVertical(partedecima, partedebaixo)
-	#cv2.imshow("F6", resultado)
-	cv2.imwrite('FRISO6.png', resultado)	
+	
+	cv2.imwrite('%s/FRISO6.png' %diretorio_output, resultado)	
 		
-def friso7EU(imagem):
+def friso7(imagem):
 	imagem_refletida = reflexaoVertical(imagem)
 	partedecima = translacao(imagem_refletida,imagem)
 	partedebaixo = reflexaoHorizontal(partedecima)
@@ -112,24 +112,23 @@ def friso7EU(imagem):
 		partedecima = translacao(partedecima, partedecima)
 		partedebaixo = translacao(partedebaixo, partedebaixo)
 	resultado = concatenaVertical(partedecima, partedebaixo)
-	#cv2.imshow("F7", resultado)
-	cv2.imwrite('FRISO7.png', resultado)	
+	
+	cv2.imwrite('%s/FRISO7.png' %diretorio_output, resultado)	
+
 
 foto = sys.argv[1]
 diretorio_output = sys.argv[2]
 
 imagem = cv2.imread(foto, 1)
 
+friso1(imagem)
+friso2(imagem)
+friso3(imagem)
+friso4(imagem)
+friso5(imagem)
+friso6(imagem)
+friso7(imagem)
 
-friso1EU(imagem)
-friso2EU(imagem)
-friso3EU(imagem)
-friso4EU(imagem)
-friso5EU(imagem)
-friso6EU(imagem)
-friso7EU(imagem)
-
-#cv2.waitKey(0)
 
 
 
