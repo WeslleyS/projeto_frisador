@@ -16,6 +16,7 @@
   - Abra o terminal
   - Navegue até a pasta do projeto
   - execute o seguinte comando:
+  
   ./run.sh foto.png diretorio_pra_salvar
   
 
